@@ -11,6 +11,12 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+// Authentication routes...
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+Route::group(['middleware' => ['auth','admin']], function() {
+    Route::get('/', ['as' => 'home', 'uses' => 'Admin\SourceController@index']);
+    Route::resource('source', 'Admin\SourceController');
 });
