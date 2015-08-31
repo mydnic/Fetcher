@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\Source;
 use Feeds;
@@ -28,7 +29,9 @@ class SourceController extends Controller
      */
     public function create()
     {
-        return view('admin.source.create');
+        $categories = Category::all();
+        return view('admin.source.create')
+            ->with('categories', $categories);
     }
 
     /**
@@ -45,6 +48,9 @@ class SourceController extends Controller
         $source->website_url = $feed->get_permalink();
         $source->save();
 
+        $post->categories()->sync($request->input('category_id'));
+
+        Flash::success('Source added !');
         return redirect()->route('source.index');
     }
 
@@ -67,7 +73,11 @@ class SourceController extends Controller
      */
     public function edit($id)
     {
-        //
+        $categories = Category::all();
+        $source     = Source::find($id);
+        return view('admin.source.edit')
+            ->with('source', $source)
+            ->with('categories', $categories);
     }
 
     /**
@@ -79,7 +89,17 @@ class SourceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $source              = Source::find($id);
+        $source->feed_url    = $request->input('feed_url');
+        $feed                = Feeds::make($source->feed_url);
+        $source->name        = $feed->get_title();
+        $source->website_url = $feed->get_permalink();
+        $source->save();
+
+        $post->categories()->sync($request->input('category_id'));
+        
+        Flash::success('Source updated !');
+        return redirect()->route('source.index');
     }
 
     /**

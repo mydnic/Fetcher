@@ -21,7 +21,10 @@
                     <a class="nav-link" href="{{route('home')}}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('settings')}}">Admin Settings</a>
+                    <a class="nav-link" href="{{route('settings')}}">Account Settings</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('category.index')}}">Categories</a>
                 </li>
             </ul>
         </nav>

@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12 text-right">
-            {!! link_to_route('source.create', 'Add a news feed', [], ['class'=>'btn btn-primary']) !!}
+            {!! link_to_route('category.create', 'Add a category', [], ['class'=>'btn btn-primary']) !!}
         </div>
     </div>
     <div class="row">
@@ -13,28 +13,20 @@
                     <tr>
                         <th>#</th>
                         <th>Name</th>
-                        <th>Website URL</th>
-                        <th>Feed URL</th>
-                        <th>Items</th>
+                        <th>Feed assigned</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($sources as $source): ?>
+                    <?php foreach ($categories as $category): ?>
                         <tr>
                             <th scope="row">
-                                {{ $source->id }}
+                                {{ $category->id }}
                             </th>
                             <td>
-                                {!! link_to_route('source.edit', $source->name, $source->id) !!}
+                                {!! link_to_route('category.edit', $category->name, $category->id) !!}
                             </td>
                             <td>
-                                {{ $source->website_url }}
-                            </td>
-                            <td>
-                                {{ $source->feed_url }}
-                            </td>
-                            <td>
-                                {{ $source->articles()->count() }}
+                                {{ $category->sources()->count() }}
                             </td>
                         </tr>
                     <?php endforeach ?>

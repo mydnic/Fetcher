@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="row">
-        {!! Form::open(['route'=>'source.store']) !!}
+        {!! Form::model($source, ['route'=>['source.store', $source->id], 'method'=>'put']) !!}
             <div class="col-md-9">
                 <fieldset class="form-group">
                     {!! Form::label('feed_url', 'RSS URL') !!}
@@ -20,7 +20,7 @@
                 @foreach ($categories as $category)
                     <div class="checkbox">
                         <label>
-                            {!! Form::checkbox('category_id[]', $category->id) !!} {{ $category->name }}
+                            {!! Form::checkbox('category_id[]', $category->id, $source->categories->contains($category->id)) !!} {{ $category->name }}
                         </label>
                     </div>
                 @endforeach

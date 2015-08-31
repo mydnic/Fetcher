@@ -21,4 +21,5 @@ Route::group(['middleware' => ['auth','admin']], function() {
     Route::get('settings', ['as' => 'settings', 'uses' => 'Admin\UserController@edit']);
     Route::put('settings', ['as' => 'settings.update', 'uses' => 'Admin\UserController@update']);
     Route::resource('source', 'Admin\SourceController');
+    Route::resource('category', 'Admin\CategoryController');
 });
