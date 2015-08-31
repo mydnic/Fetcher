@@ -48,7 +48,7 @@ class SourceController extends Controller
         $source->website_url = $feed->get_permalink();
         $source->save();
 
-        $post->categories()->sync($request->input('category_id'));
+        $source->categories()->sync($request->input('category_id'));
 
         Flash::success('Source added !');
         return redirect()->route('source.index');
@@ -96,7 +96,7 @@ class SourceController extends Controller
         $source->website_url = $feed->get_permalink();
         $source->save();
 
-        $post->categories()->sync($request->input('category_id'));
+        $source->categories()->sync($request->input('category_id'));
         
         Flash::success('Source updated !');
         return redirect()->route('source.index');
