@@ -13,18 +13,37 @@
 
     <?php if (Auth::check() && Auth::user()->superuser): ?>
         <nav class="navbar navbar-light bg-faded">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="{{route('home')}}">
                 Fetcher Admin
             </a>
             <ul class="nav navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('home')}}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{route('settings')}}">Admin Settings</a>
                 </li>
             </ul>
         </nav>
     <?php endif ?>
 
     <div class="container">
+        <div class="row">
+            <div class="col-md-6 col-md-offset-3">
+                @include('flash::message')
+            </div>
+        </div>
+        @if ($errors->any())
+            <div class="row">
+                <div class="col-md-4">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li class="text-danger">{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        @endif
         @yield('content')
     </div>
 

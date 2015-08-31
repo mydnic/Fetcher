@@ -138,6 +138,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Illuminate\Html\HtmlServiceProvider::class,
         willvincent\Feeds\FeedsServiceProvider::class,
+        Laracasts\Flash\FlashServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -196,6 +197,7 @@ return [
         'Form'      => Illuminate\Html\FormFacade::class,
         'Html'      => Illuminate\Html\HtmlFacade::class,
         'Feeds'     => willvincent\Feeds\Facades\FeedsFacade::class,
+        'Flash'     => Laracasts\Flash\Flash::class,
 
     ],
 

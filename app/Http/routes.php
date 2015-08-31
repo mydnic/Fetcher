@@ -18,5 +18,7 @@ Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
 Route::group(['middleware' => ['auth','admin']], function() {
     Route::get('/', ['as' => 'home', 'uses' => 'Admin\SourceController@index']);
+    Route::get('settings', ['as' => 'settings', 'uses' => 'Admin\UserController@edit']);
+    Route::put('settings', ['as' => 'settings.update', 'uses' => 'Admin\UserController@update']);
     Route::resource('source', 'Admin\SourceController');
 });
