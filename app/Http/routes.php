@@ -23,3 +23,7 @@ Route::group(['middleware' => ['auth','admin']], function() {
     Route::resource('source', 'Admin\SourceController');
     Route::resource('category', 'Admin\CategoryController');
 });
+
+Route::group(['prefix' => 'api/v1'], function() {
+    Route::get('category', 'API\CategoryController@index');
+});
