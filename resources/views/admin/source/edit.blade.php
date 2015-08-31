@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="row">
-        {!! Form::model($source, ['route'=>['source.store', $source->id], 'method'=>'put']) !!}
+        {!! Form::model($source, ['route'=>['source.update', $source->id], 'method'=>'put']) !!}
             <div class="col-md-9">
                 <fieldset class="form-group">
                     {!! Form::label('feed_url', 'RSS URL') !!}

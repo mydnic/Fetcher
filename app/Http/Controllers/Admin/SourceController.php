@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Source;
 use Feeds;
 use Illuminate\Http\Request;
+use Laracasts\Flash\Flash;
 
 class SourceController extends Controller
 {
