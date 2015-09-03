@@ -139,6 +139,7 @@ return [
         Illuminate\Html\HtmlServiceProvider::class,
         willvincent\Feeds\FeedsServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
+        Thujohn\Twitter\TwitterServiceProvider::class,
 
         /*
          * Application Service Providers...
@@ -198,6 +199,7 @@ return [
         'Html'      => Illuminate\Html\HtmlFacade::class,
         'Feeds'     => willvincent\Feeds\Facades\FeedsFacade::class,
         'Flash'     => Laracasts\Flash\Flash::class,
+        'Twitter'   => Thujohn\Twitter\Facades\Twitter::class,
 
     ],
 
