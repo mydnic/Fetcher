@@ -55,14 +55,19 @@ class FetchSources extends Command
                 $article->content   = $item->get_description();
                 $article->date      = Carbon::createFromFormat('j F Y, g:i a', $item->get_date());
 
-                $doc = new DOMDocument();
-                $doc->loadHTML($article->content);
-                $imageTags = $doc->getElementsByTagName('img');
+                if (!empty($article->content)) {
+                    // Disable HTML 5 related errors
+                    libxml_use_internal_errors(true);
 
-                foreach ($imageTags as $tag) {
-                    $src = $tag->getAttribute('src');
-                    if (strpos($src, ".jpg") or strpos($src, ".png") or strpos($src, ".jpeg")) {
-                        $article->image_url = $src;
+                    $doc = new DOMDocument();
+                    $doc->loadHTML($article->content);
+                    $imageTags = $doc->getElementsByTagName('img');
+
+                    foreach ($imageTags as $tag) {
+                        $src = $tag->getAttribute('src');
+                        if (strpos($src, ".jpg") or strpos($src, ".png") or strpos($src, ".jpeg")) {
+                            $article->image_url = $src;
+                        }
                     }
                 }
 
