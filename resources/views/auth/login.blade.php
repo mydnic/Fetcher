@@ -1,4 +1,4 @@
-@extends('app')
+@extends('admin.layout')
 
 @section('content')
     <form method="POST" action="/auth/login">

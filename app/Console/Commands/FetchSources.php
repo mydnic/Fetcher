@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use App\Article;
 use App\Source;
 use Carbon\Carbon;
+use DOMDocument;
 use Feeds;
 use Illuminate\Console\Command;
 
@@ -53,6 +54,18 @@ class FetchSources extends Command
                 $article->title     = $item->get_title();
                 $article->content   = $item->get_description();
                 $article->date      = Carbon::createFromFormat('j F Y, g:i a', $item->get_date());
+
+                $doc = new DOMDocument();
+                $doc->loadHTML($article->content);
+                $imageTags = $doc->getElementsByTagName('img');
+
+                foreach ($imageTags as $tag) {
+                    $src = $tag->getAttribute('src');
+                    if (strpos($src, ".jpg") or strpos($src, ".png") or strpos($src, ".jpeg")) {
+                        $article->image_url = $src;
+                    }
+                }
+
                 $article->save();
             }
         }
