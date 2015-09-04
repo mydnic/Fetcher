@@ -24,7 +24,7 @@
                     <a class="nav-link" href="{{route('settings')}}">Account Settings</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{route('category.index')}}">Categories</a>
+                    <a class="nav-link" href="{{route('admin.category.index')}}">Categories</a>
                 </li>
             </ul>
         </nav>
