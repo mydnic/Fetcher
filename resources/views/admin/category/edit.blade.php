@@ -8,7 +8,7 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            {!! Form::model($category, ['route'=>['category.update', $category->id], 'method'=>'put']) !!}
+            {!! Form::model($category, ['route'=>['admin.category.update', $category->id], 'method'=>'put']) !!}
                 <fieldset class="form-group">
                     {!! Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Category Name']) !!}
                 </fieldset>

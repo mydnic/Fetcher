@@ -52,7 +52,7 @@ class SourceController extends Controller
         $source->categories()->sync($request->input('category_id'));
 
         Flash::success('Source added !');
-        return redirect()->route('source.index');
+        return redirect()->route('admin.source.index');
     }
 
     /**
@@ -100,7 +100,7 @@ class SourceController extends Controller
         $source->categories()->sync($request->input('category_id'));
         
         Flash::success('Source updated !');
-        return redirect()->route('source.index');
+        return redirect()->route('admin.source.index');
     }
 
     /**

@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="row">
-        {!! Form::open(['route'=>'source.store']) !!}
+        {!! Form::open(['route'=>'admin.source.store']) !!}
             <div class="col-md-9">
                 <fieldset class="form-group">
                     {!! Form::label('feed_url', 'RSS URL') !!}

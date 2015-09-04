@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12 text-right">
-            {!! link_to_route('source.create', 'Add a news feed', [], ['class'=>'btn btn-primary']) !!}
+            {!! link_to_route('admin.source.create', 'Add a news feed', [], ['class'=>'btn btn-primary']) !!}
         </div>
     </div>
     <div class="row">
@@ -25,7 +25,7 @@
                                 {{ $source->id }}
                             </th>
                             <td>
-                                {!! link_to_route('source.edit', $source->name, $source->id) !!}
+                                {!! link_to_route('admin.source.edit', $source->name, $source->id) !!}
                             </td>
                             <td>
                                 {{ $source->website_url }}

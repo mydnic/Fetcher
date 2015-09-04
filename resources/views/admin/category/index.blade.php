@@ -3,7 +3,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12 text-right">
-            {!! link_to_route('category.create', 'Add a category', [], ['class'=>'btn btn-primary']) !!}
+            {!! link_to_route('admin.category.create', 'Add a category', [], ['class'=>'btn btn-primary']) !!}
         </div>
     </div>
     <div class="row">
@@ -23,7 +23,7 @@
                                 {{ $category->id }}
                             </th>
                             <td>
-                                {!! link_to_route('category.edit', $category->name, $category->id) !!}
+                                {!! link_to_route('admin.category.edit', $category->name, $category->id) !!}
                             </td>
                             <td>
                                 {{ $category->sources()->count() }}

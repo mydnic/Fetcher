@@ -46,7 +46,7 @@ class CategoryController extends Controller
         $category->save();
 
         Flash::success('Category added !');
-        return Redirect::route('category.index');
+        return Redirect::route('admin.category.index');
     }
 
     /**
