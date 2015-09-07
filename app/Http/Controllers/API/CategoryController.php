@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\API;
 
+use App\Article;
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Requests;
@@ -46,9 +47,14 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function show($id)
+    public function getArticles($id)
     {
-        //
+        $sources = Category::find($id)->sources;
+        $ids = [];
+        foreach ($sources as $source) {
+            $ids[] = $source->id;
+        }
+        return Article::whereIn('source_id', $ids)->orderBy('date', 'DESC')->get();
     }
 
     /**
