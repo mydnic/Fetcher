@@ -67,6 +67,7 @@ class FetchSources extends Command
                         $src = $tag->getAttribute('src');
                         if (strpos($src, ".jpg") or strpos($src, ".png") or strpos($src, ".jpeg")) {
                             $article->image_url = $src;
+                            break;
                         }
                     }
                 }
