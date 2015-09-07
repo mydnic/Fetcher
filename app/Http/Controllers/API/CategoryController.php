@@ -47,14 +47,14 @@ class CategoryController extends Controller
      * @param  int  $id
      * @return Response
      */
-    public function getArticles($id)
+    public function getArticles($id, $number)
     {
         $sources = Category::find($id)->sources;
         $ids = [];
         foreach ($sources as $source) {
             $ids[] = $source->id;
         }
-        return Article::whereIn('source_id', $ids)->orderBy('date', 'DESC')->get();
+        return Article::whereIn('source_id', $ids)->orderBy('date', 'DESC')->take($number)->get();
     }
 
     /**

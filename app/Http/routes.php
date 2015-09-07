@@ -26,5 +26,5 @@ Route::group(['prefix' => 'admin', 'middleware' => ['auth', 'admin']], function 
 
 Route::group(['prefix' => 'api/v1'], function () {
     Route::get('category', 'API\CategoryController@index');
-    Route::get('category/{id}', 'API\CategoryController@getArticles');
+    Route::get('category/{id}/{number}', 'API\CategoryController@getArticles');
 });
