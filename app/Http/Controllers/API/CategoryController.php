@@ -22,7 +22,7 @@ class CategoryController extends Controller
             $result     = [];
             foreach ($categories as $category) {
                 $category->load(['sources.articles' => function ($q) use (&$articles, $number) {
-                    $articles = $q->take($number)->get()->unique();
+                    $articles = $q->orderBy('date', 'DESC')->take($number)->get()->unique();
                 }]);
                 $result[] = [
                     'name'     => $category->name,
