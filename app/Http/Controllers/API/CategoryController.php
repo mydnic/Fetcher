@@ -5,8 +5,7 @@ namespace App\Http\Controllers\API;
 use App\Article;
 use App\Category;
 use App\Http\Controllers\Controller;
-use App\Http\Requests;
-use Illuminate\Http\Request;
+use Request;
 
 class CategoryController extends Controller
 {
@@ -17,6 +16,23 @@ class CategoryController extends Controller
      */
     public function index()
     {
+        if (Request::get('withArticles')) {
+            $number     = Request::get('number');
+            $categories = Category::all();
+            $result     = [];
+            foreach ($categories as $category) {
+                $category->load(['sources.articles' => function ($q) use (&$articles, $number) {
+                    $articles = $q->take($number)->get()->unique();
+                }]);
+                $result[] = [
+                    'name'     => $category->name,
+                    'id'       => $category->id,
+                    'articles' => $articles,
+                ];
+            }
+
+            return $result;
+        }
         return Category::all(['name', 'id']);
     }
 
@@ -50,7 +66,7 @@ class CategoryController extends Controller
     public function getArticles($id, $number)
     {
         $sources = Category::find($id)->sources;
-        $ids = [];
+        $ids     = [];
         foreach ($sources as $source) {
             $ids[] = $source->id;
         }
