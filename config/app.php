@@ -140,6 +140,7 @@ return [
         willvincent\Feeds\FeedsServiceProvider::class,
         Laracasts\Flash\FlashServiceProvider::class,
         Thujohn\Twitter\TwitterServiceProvider::class,
+        Cviebrock\EloquentSluggable\SluggableServiceProvider::class,
 
         /*
          * Application Service Providers...
