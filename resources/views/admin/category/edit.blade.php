@@ -12,6 +12,9 @@
                 <fieldset class="form-group">
                     {!! Form::text('name', null, ['class'=>'form-control', 'placeholder'=>'Category Name']) !!}
                 </fieldset>
+                <fieldset class="form-group">
+                    {!! Form::text('image_url', null, ['class'=>'form-control', 'placeholder'=>'Background Image']) !!}
+                </fieldset>
                 {!! Form::submit('Send', ['class'=>'btn btn-primary']) !!}
             {!! Form::close() !!}
         </div>
