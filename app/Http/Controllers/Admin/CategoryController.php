@@ -41,8 +41,9 @@ class CategoryController extends Controller
      */
     public function store(AdminStoreCategory $request)
     {
-        $category       = new Category;
-        $category->name = $request->input('name');
+        $category            = new Category;
+        $category->name      = $request->input('name');
+        $category->image_url = $request->input('image_url');
         $category->save();
 
         Flash::success('Category added !');
@@ -81,8 +82,9 @@ class CategoryController extends Controller
      */
     public function update(AdminStoreCategory $request, $id)
     {
-        $category       = Category::find($id);
-        $category->name = $request->input('name');
+        $category            = Category::find($id);
+        $category->name      = $request->input('name');
+        $category->image_url = $request->input('image_url');
         $category->save();
 
         Flash::success('Category saved !');

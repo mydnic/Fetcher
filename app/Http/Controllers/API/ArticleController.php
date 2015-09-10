@@ -48,7 +48,7 @@ class ArticleController extends Controller
      */
     public function show($slug)
     {
-        return Article::whereSlug($slug)->first();
+        return Article::whereSlug($slug)->with('source.categories')->first();
     }
 
     /**
