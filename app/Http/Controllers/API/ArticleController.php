@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests;
 use Illuminate\Http\Request;
 
-class ArticleController.php extends Controller
+class ArticleController extends Controller
 {
     /**
      * Display a listing of the resource.
