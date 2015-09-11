@@ -25,9 +25,10 @@ class CategoryController extends Controller
                     $articles = $q->orderBy('date', 'DESC')->take($number)->get()->unique();
                 }]);
                 $result[] = [
-                    'name'     => $category->name,
-                    'id'       => $category->id,
-                    'articles' => $articles,
+                    'name'      => $category->name,
+                    'id'        => $category->id,
+                    'image_url' => $category->image_url,
+                    'articles'  => $articles,
                 ];
             }
 
