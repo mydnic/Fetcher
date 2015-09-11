@@ -71,7 +71,13 @@ class CategoryController extends Controller
         foreach ($sources as $source) {
             $ids[] = $source->id;
         }
-        return Article::whereIn('source_id', $ids)->orderBy('date', 'DESC')->take($number)->get();
+        $articles = Article::whereIn('source_id', $ids)->orderBy('date', 'DESC')->take($number)->get();
+        return [
+            'name'      => $category->name,
+            'id'        => $category->id,
+            'image_url' => $category->image_url,
+            'articles'  => $articles,
+        ];
     }
 
     /**
