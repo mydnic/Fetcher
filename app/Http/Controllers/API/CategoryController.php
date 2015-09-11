@@ -66,7 +66,8 @@ class CategoryController extends Controller
      */
     public function getArticles($id, $number)
     {
-        $sources = Category::whereName($id)->first()->sources;
+        $category = Category::whereName($id)->first();
+        $sources = $category->sources;
         $ids     = [];
         foreach ($sources as $source) {
             $ids[] = $source->id;
