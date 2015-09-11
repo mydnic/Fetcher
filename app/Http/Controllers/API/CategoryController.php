@@ -19,11 +19,12 @@ class CategoryController extends Controller
         if (Request::get('withArticles')) {
             $number     = Request::get('number');
             $categories = Category::all();
+            $result     = [];
             foreach ($categories as $category) {
                 $category->load(['sources.articles' => function ($q) use (&$articles, $number) {
                     $articles = $q->orderBy('date', 'DESC')->take($number)->get()->unique();
                 }]);
-                $result = [
+                $result[] = [
                     'name'      => $category->name,
                     'id'        => $category->id,
                     'image_url' => $category->image_url,
