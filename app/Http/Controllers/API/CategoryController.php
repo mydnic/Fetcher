@@ -77,7 +77,7 @@ class CategoryController extends Controller
             'name'      => $category->name,
             'id'        => $category->id,
             'image_url' => $category->image_url,
-            'articles'  => $articles,
+            'articles'  => $articles->toArray(),
         ];
     }
 
