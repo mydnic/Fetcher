@@ -53,7 +53,11 @@ class FetchSources extends Command
                 $article->source_id = $source->id;
                 $article->title     = $item->get_title();
                 $article->content   = $item->get_description();
-                $article->date      = Carbon::createFromFormat('j F Y, g:i a', $item->get_date());
+                if ($item->get_date()) {
+                    $article->date = Carbon::createFromFormat('j F Y, g:i a', $item->get_date());
+                } else {
+                    $article->date = Carbon::now();
+                }
 
                 if (!empty($article->content)) {
                     // Disable HTML 5 related errors
